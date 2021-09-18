@@ -20,12 +20,16 @@
 #define PQueue_Vector_Included
 
 #include <string>
-
+#include <vector.h>
+#include <patientwithpriority.h>
 /* A class representing a priority queue backed by an
  * unsorted Vector.
  */
 class VectorPriorityQueue {
+
+
 public:
+
     /**
      * Constructs a new, empty priority queue.
      */
@@ -79,11 +83,25 @@ public:
      * @throws ErrorException If the queue is empty.
      */
     std::string dequeueMin();
+    //void fillInPatientInfo(Patient data);
+
+    int findlargest(Vector<PatientWithPriority> vector) const;
+
 
 private:
-    // TODO: Fill this in with your implementation of this class. Feel
-    // free to add as many member functions, data members, structs,
-    // and classes as you feel are necessary. Then, delete this comment.
+
+    bool empty(const Vector<PatientWithPriority()> vec);
+    Vector<PatientWithPriority> _patientWithPriotiry;
+    //void ParseString(PatientWithPriority patient,const std::string& value);
+    int findWithHighestPriority(Vector<PatientWithPriority> _vector,int element) const;
+    int getOneWithHighestPriority(Vector<PatientWithPriority> vec, int element) const;
+
+
+
+
 };
+
+
+
 
 #endif

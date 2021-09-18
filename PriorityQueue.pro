@@ -93,7 +93,8 @@ win32 {
 exists($$PWD/lib/StanfordCPPLib/*.cpp) {
     SOURCES += $$PWD/lib/StanfordCPPLib/*.cpp
 }
-SOURCES += $$PWD/lib/StanfordCPPLib/collections/*.cpp
+SOURCES += $$PWD/lib/StanfordCPPLib/collections/*.cpp \
+    src/patientwithpriority.cpp
 SOURCES += $$PWD/lib/StanfordCPPLib/graphics/*.cpp
 SOURCES += $$PWD/lib/StanfordCPPLib/io/*.cpp
 SOURCES += $$PWD/lib/StanfordCPPLib/private/*.cpp
@@ -112,7 +113,8 @@ exists($$PWD/$$PROJECT_FILTER*.cpp) {
 exists($$PWD/lib/StanfordCPPLib/*.h) {
     HEADERS += $$PWD/lib/StanfordCPPLib/*.h
 }
-HEADERS += $$PWD/lib/StanfordCPPLib/collections/*.h
+HEADERS += $$PWD/lib/StanfordCPPLib/collections/*.h \
+    src/patientwithpriority.h
 HEADERS += $$PWD/lib/StanfordCPPLib/graphics/*.h
 HEADERS += $$PWD/lib/StanfordCPPLib/io/*.h
 HEADERS += $$PWD/lib/StanfordCPPLib/private/*.h
