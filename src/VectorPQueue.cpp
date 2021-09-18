@@ -43,12 +43,17 @@ string VectorPriorityQueue::peek() const {
     int t=getOneWithHighestPriority(_patientWithPriotiry,element);
     PatientWithPriority patient=_patientWithPriotiry[t];
     string patientName=patient.getName();
+    return patientName;
 }
 
 string VectorPriorityQueue::dequeueMin() {
-	// TODO: Fill this in!
+    int element=findlargest(_patientWithPriotiry);
+    int t=getOneWithHighestPriority(_patientWithPriotiry,element);
+    PatientWithPriority patient=_patientWithPriotiry[t];
+    string patientName=patient.getName();
+    _patientWithPriotiry.remove(t);
 	
-	return "";
+    return patientName;
 }
 
 Vector<std::string> ParseString(const std::string &value){
