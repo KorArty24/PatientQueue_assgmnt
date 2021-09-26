@@ -94,6 +94,7 @@ exists($$PWD/lib/StanfordCPPLib/*.cpp) {
     SOURCES += $$PWD/lib/StanfordCPPLib/*.cpp
 }
 SOURCES += $$PWD/lib/StanfordCPPLib/collections/*.cpp \
+    src/patientnode.cpp \
     src/patientwithpriority.cpp
 SOURCES += $$PWD/lib/StanfordCPPLib/graphics/*.cpp
 SOURCES += $$PWD/lib/StanfordCPPLib/io/*.cpp
@@ -114,6 +115,7 @@ exists($$PWD/lib/StanfordCPPLib/*.h) {
     HEADERS += $$PWD/lib/StanfordCPPLib/*.h
 }
 HEADERS += $$PWD/lib/StanfordCPPLib/collections/*.h \
+    src/patientnode.h \
     src/patientwithpriority.h
 HEADERS += $$PWD/lib/StanfordCPPLib/graphics/*.h
 HEADERS += $$PWD/lib/StanfordCPPLib/io/*.h

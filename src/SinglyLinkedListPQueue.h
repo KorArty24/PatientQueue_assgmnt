@@ -20,7 +20,7 @@
 #define PQueue_LinkedList_Included
 
 #include <string>
-
+#include "patientnode.h"
 /* A class representing a priority queue backed by a sorted,
  * singly-linked list.
  */
@@ -81,9 +81,11 @@ public:
     std::string dequeueMin();
 
 private:
-    // TODO: Fill this in with your implementation of this class. Feel
-    // free to add as many member functions, data members, structs,
-    // and classes as you feel are necessary. Then, delete this comment.
+    int count();
+    bool hasNext(PatientNode node);
+    PatientNode parseStringValue(std::string &token,PatientNode node);
+
 };
+
 
 #endif

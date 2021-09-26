@@ -1,3 +1,5 @@
+
+
 /*************************************************************
  * File: SinglyLinkedListPQueue.cpp
  *
@@ -7,20 +9,21 @@
  
 #include "SinglyLinkedListPQueue.h"
 #include "error.h"
+#include "patientnode.h"
 using namespace std;
 
 SinglyLinkedListPriorityQueue::SinglyLinkedListPriorityQueue() {
-	// TODO: Fill this in!
+    int  *ptr = NULL;
 }
 
 SinglyLinkedListPriorityQueue::~SinglyLinkedListPriorityQueue() {
-	// TODO: Fill this in!
+    clear();
 }
 
 int SinglyLinkedListPriorityQueue::size() const {
 	// TODO: Fill this in!
 	
-	return 0;
+    return count;
 }
 
 bool SinglyLinkedListPriorityQueue::isEmpty() const {
@@ -46,3 +49,16 @@ string SinglyLinkedListPriorityQueue::dequeueMin() {
 	return "";
 }
 
+int SinglyLinkedListPriorityQueue::count(){
+    return 0;
+};
+
+bool SinglyLinkedListPriorityQueue::hasNext(PatientNode node){
+    return node.next==NULL;
+}
+
+PatientNode parseStringValue(std::string &token,PatientNode node){
+    int pos=token.find("");
+    node.name=token.substr(0,pos);
+    node.priority=stoi(token.substr((pos+1),token.length()));
+}
