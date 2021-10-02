@@ -84,6 +84,8 @@ private:
     int count();
     bool hasNext(PatientNode node);
     PatientNode parseStringValue(std::string &token,PatientNode node);
+    PatientNode *firstnode;
+    PatientNode createNode(const std::string &token) const;
 
 };
 

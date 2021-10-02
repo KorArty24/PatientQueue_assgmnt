@@ -13,7 +13,7 @@
 using namespace std;
 
 SinglyLinkedListPriorityQueue::SinglyLinkedListPriorityQueue() {
-    int  *ptr = NULL;
+    firstnode = NULL;
 }
 
 SinglyLinkedListPriorityQueue::~SinglyLinkedListPriorityQueue() {
@@ -34,7 +34,22 @@ bool SinglyLinkedListPriorityQueue::isEmpty() const {
 
 void SinglyLinkedListPriorityQueue::enqueue(const string& value) {
 	// TODO: Fill this in!
-    (void) value;
+    if (firstnode==NULL){
+    *firstnode = createNode(value);
+    } else {
+        PatientNode newnode=createNode(value);
+        PatientNode *node=firstnode;
+        while(hasNext(*node)){
+            PatientNode *nextnode = node->next;
+            PatientNode *temp;
+            if((newnode.priority) < (nextnode->priority)){
+                temp=nextnode;
+                newnode.next=nextnode;
+                node->next=&newnode;
+            }
+        }
+    }
+
 }
 
 string SinglyLinkedListPriorityQueue::peek() const {
@@ -55,10 +70,12 @@ int SinglyLinkedListPriorityQueue::count(){
 
 bool SinglyLinkedListPriorityQueue::hasNext(PatientNode node){
     return node.next==NULL;
-}
+};
 
-PatientNode parseStringValue(std::string &token,PatientNode node){
+PatientNode SinglyLinkedListPriorityQueue::createNode(const string &token) const {
     int pos=token.find("");
-    node.name=token.substr(0,pos);
-    node.priority=stoi(token.substr((pos+1),token.length()));
+    std::string name=token.substr(0,pos);
+    int priority=stoi(token.substr((pos+1),token.length()));
+    return *(new PatientNode(name,priority));
+
 }
