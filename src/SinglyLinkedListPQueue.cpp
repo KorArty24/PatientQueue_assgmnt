@@ -33,19 +33,24 @@ bool SinglyLinkedListPriorityQueue::isEmpty() const {
 }
 
 void SinglyLinkedListPriorityQueue::enqueue(const string& value) {
-	// TODO: Fill this in!
+    PatientNode newnode=createNode(value);
     if (firstnode==NULL){
-    *firstnode = createNode(value);
+    *firstnode = newnode;
+    } else if (firstnode->priority>newnode.priority){
+        newnode.next=firstnode;
     } else {
-        PatientNode newnode=createNode(value);
-        PatientNode *node=firstnode;
-        while(hasNext(*node)){
-            PatientNode *nextnode = node->next;
-            PatientNode *temp;
+
+        PatientNode *nextnode=firstnode;
+        PatientNode *previous;
+        while(true){
+            //PatientNode *nextnode = node->next;
             if((newnode.priority) < (nextnode->priority)){
-                temp=nextnode;
+                PatientNode *temp=nextnode;
                 newnode.next=nextnode;
-                node->next=&newnode;
+                previous->next=&newnode;
+
+            } else if (newnode.priority >= nextnode->priority) {
+
             }
         }
     }
