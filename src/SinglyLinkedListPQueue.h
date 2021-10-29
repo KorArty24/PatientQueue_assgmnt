@@ -81,8 +81,8 @@ public:
     std::string dequeueMin();
 
 private:
-    int count();
-    bool hasNext(PatientNode node);
+    int countElements() const;
+    bool hasNext(PatientNode node) const;
     PatientNode parseStringValue(std::string &token,PatientNode node);
     PatientNode *firstnode;
     PatientNode createNode(const std::string &token) const;
