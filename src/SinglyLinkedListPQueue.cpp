@@ -17,7 +17,13 @@ SinglyLinkedListPriorityQueue::SinglyLinkedListPriorityQueue() {
 }
 
 SinglyLinkedListPriorityQueue::~SinglyLinkedListPriorityQueue() {
-    clear();
+    PatientNode *current=firstnode;
+    while (hasNext(*current)){
+        PatientNode *next = current->next;
+        delete[] current;
+        current=next;
+ }
+    delete[] current;
 }
 
 int SinglyLinkedListPriorityQueue::size() const {
@@ -27,9 +33,8 @@ int SinglyLinkedListPriorityQueue::size() const {
 }
 
 bool SinglyLinkedListPriorityQueue::isEmpty() const {
-	// TODO: Fill this in!
-	
-	return true;
+
+    if (firstnode==NULL) return true;
 }
 
 void SinglyLinkedListPriorityQueue::enqueue(const string& value) {
@@ -38,7 +43,7 @@ void SinglyLinkedListPriorityQueue::enqueue(const string& value) {
     PatientNode *nextnode=currentNode->next;
     PatientNode *previous;
     int count;
-    if (firstnode==NULL){ //enqueue into the empty list
+    if (isEmpty()){ //enqueue into the empty list
     *firstnode = newnode;
     } else if ((firstnode->priority>newnode.priority)){
         newnode.next=firstnode;
@@ -64,9 +69,9 @@ void SinglyLinkedListPriorityQueue::enqueue(const string& value) {
 
 string SinglyLinkedListPriorityQueue::peek() const {
     try {
-        if (firstnode!=NULL) {
+        if (!isEmpty()) {
             return firstnode->name;
-        } else if (firstnode==NULL) {
+        } else {
             throw (NULL);
         }
 
@@ -93,7 +98,7 @@ string SinglyLinkedListPriorityQueue::dequeueMin() {
                 string Name = temp->name;
                 return Name;
             }
-        } else if (firstnode==NULL) {
+        } else if (isEmpty()) {
             throw (NULL);
         }
 
@@ -118,7 +123,7 @@ int SinglyLinkedListPriorityQueue::countElements() const {
 };
 
 bool SinglyLinkedListPriorityQueue::hasNext(PatientNode node) const{
-    return node.next==NULL;
+    return node.next!=NULL;
 };
 
 PatientNode SinglyLinkedListPriorityQueue::createNode(const string &token) const {
