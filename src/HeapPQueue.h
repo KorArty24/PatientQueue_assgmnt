@@ -7,6 +7,7 @@
 #ifndef PQueue_Heap_Included
 #define PQueue_Heap_Included
 
+#include "patientnode.h"
 #include <string>
 
 /* A class representing a priority queue backed by an
@@ -76,6 +77,17 @@ private:
     // Remember that you are *required* to do all your own memory
     // management in this class. You may not use the Vector type or any
     // other related types.
+    PatientNode *array;
+    int capacity;
+    int asize;
+    /*Private methods prototypes*/
+    void expandCapacity();
+    void swapElements(int last, int root);
+    PatientNode createNode(const std::string& token) const;
+    void swapFirstAndLast(int first, int last);
+    void restoreOrder();
+    int FindSmallest(int i, int j);
+
 };
 
 #endif
