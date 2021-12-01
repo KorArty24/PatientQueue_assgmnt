@@ -25,30 +25,28 @@ HeapPriorityQueue::~HeapPriorityQueue() {
 int HeapPriorityQueue::size() const {
 	// TODO: Fill this in!
 	
-	return 0;
+    return asize;
 }
 
 bool HeapPriorityQueue::isEmpty() const {
-	// TODO: Fill this in!
-	
-	return true;
+
+    return asize==0;
+
 }
 
 void HeapPriorityQueue::enqueue(const string& value) {
-  if (asize==capacity){
-      expandCapacity();
-  }
+  if (asize==capacity)  expandCapacity();
   array[asize]=createNode(value);
   if (array[asize].priority<
           array[asize/2].priority){
       swapElements(asize,asize/2);
   }
+  asize++;
 }
 
 string HeapPriorityQueue::peek() const {
-	// TODO: Fill this in!
 	
-	return "";
+    return array->name+":"+to_string(array->priority);
 }
 
 string HeapPriorityQueue::dequeueMin() {
@@ -66,7 +64,7 @@ PatientNode HeapPriorityQueue::createNode(const string &token) const {
 
 void HeapPriorityQueue::restoreOrder(){
 
-    for (int i=1;(2*i+1)<=asize;i++){
+    for (int i=1;(2*i+1)<=(asize-1);i++){
         int smallest = FindSmallest(2*i,2*i+1);
         if (array[i].priority<array[smallest].priority){
             PatientNode temp =array[smallest];
@@ -85,12 +83,21 @@ int HeapPriorityQueue::FindSmallest(int i, int j){
 }
 
 void HeapPriorityQueue::swapElements(int last, int root){
-    if (array[last].priority<array[last/2].priority){
-        return;
+    while (array[last].priority > array[last/2].priority){
+        PatientNode temp = array[last];
+        array[last]=array[last/2];
+        array[last/2]= temp;
+        last=last/2;
     }
-    PatientNode temp = array[last];
-    array[last]=array[last/2];
-    array[last/2]=temp;
-    last=last/2;
-    swapElements(last,last/2);
+
 }
+
+void HeapPriorityQueue::expandCapacity(){
+        PatientNode *oldArray= array;
+        capacity=capacity*2;
+        array = new PatientNode[capacity];
+        for (int i=1;i<asize; i++){
+            array[i]=oldArray[i];
+        }
+        delete[] oldArray;
+        }
