@@ -495,3 +495,6 @@ exists($$PWD/lib/autograder/*.cpp) {
 ###############################################################################
 
 # END OF FILE (this should be line #493; if not, your .pro has been changed!)
+
+DISTFILES += \
+    readme.md
